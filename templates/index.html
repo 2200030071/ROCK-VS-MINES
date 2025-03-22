@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonar Data Classification</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f8fb; /* Soft Blue-Gray */
+            color: #2c3e50; /* Muted Dark Blue */
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #5d6472; /* Soft Slate */
+        }
+        form {
+            background: #e3eaf0; /* Light Blue-Gray */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 850px;
+            width: 100%;
+        }
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 750px;
+            margin: auto;
+        }
+        .input-container input {
+            width: 65px;
+            height: 35px;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #a3b1c6; /* Soft Blue Gray */
+            border-radius: 6px;
+            outline: none;
+            background: #fcfcfc; /* Soft White */
+            color: #2c3e50;
+            transition: all 0.3s ease-in-out;
+        }
+        .input-container input:focus {
+            border-color: #6c8ebf; /* Muted Blue */
+            background: #eef3f7;
+        }
+        button {
+            background: #6a994e; /* Muted Green */
+            color: white;
+            font-size: 16px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #58873c; /* Darker Green */
+        }
+        h3 {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #8d6a9f; /* Muted Purple */
+        }
+    </style>
+</head>
+<body>
+    <h2>Sonar Data Classification</h2>
+    <form action="/predict" method="post">
+        <div class="input-container">
+            {% for i in range(1, 61) %}
+                <input type="number" name="input{{ i }}" placeholder="Input {{ i }}" required step="any" pattern="[0-9]*[.]?[0-9]+">
+            {% endfor %}
+        </div>
+        <br>
+        <button type="submit">Predict</button>
+    </form>
+    <h3>{{ prediction_text }}</h3>
+</body>
+</html>
